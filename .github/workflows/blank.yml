@@ -36,7 +36,7 @@ jobs:
           # 切换到设备树仓库目录  
           cd android_device_xiaomi_Mi8937
           # 假设 Makefile 在 device-tree-repo 的根目录下  
-          make  
+          bash setup-makefiles.sh  
    
       - name: Upload compiled DTB as artifact  
         uses: actions/upload-artifact@v3  
