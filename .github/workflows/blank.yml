@@ -26,7 +26,7 @@ jobs:
       - name: Clone device tree repository  
         run: |  
           # 假设设备树文件在另一个 Git 仓库中  
-          git clone https://github.com/LuoxueQWQ/android_device_xiaomi_Mi8937.git
+          git -c http.sslVerify=false clone https://github.com/LuoxueQWQ/android_device_xiaomi_Mi8937.git
           cd android_device_xiaomi_Mi8937
           # 如果需要切换到特定的分支或标签，可以执行以下命令  
           # git checkout a13-master
