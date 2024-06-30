@@ -21,7 +21,7 @@ jobs:
         run: |  
           apt-get update  
           apt-get install -y --no-install-recommends device-tree-compiler
-          apt-get install -y --no-install-recommends build-essential dtc
+          apt-get install -y --no-install-recommends build-essential git
    
       - name: Clone device tree repository  
         run: |  
