@@ -20,7 +20,8 @@ jobs:
       - name: Install dependencies  
         run: |  
           apt-get update  
-          apt-get install -y --no-install-recommends build-essential dtc  
+          apt-get install device-tree-compiler
+          apt-get install -y --no-install-recommends build-essential dtc
    
       - name: Clone device tree repository  
         run: |  
