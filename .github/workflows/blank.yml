@@ -1,0 +1,44 @@
+name: CI  
+  
+on:  
+  push:  
+    branches: [ main ]  
+  pull_request:  
+    branches: [ main ]  
+  
+jobs:  
+  build:  
+    runs-on: ubuntu-latest  
+    container:  
+      # 使用一个包含基本编译工具的 Docker 容器  
+      image: docker.io/library/ubuntu:latest  
+  
+    steps:  
+      - name: Checkout code  
+        uses: actions/checkout@v3  
+  
+      - name: Install dependencies  
+        run: |  
+          apt-get update  
+          apt-get install -y --no-install-recommends build-essential dtc  
+   
+      - name: Clone device tree repository  
+        run: |  
+          # 假设设备树文件在另一个 Git 仓库中  
+          git clone https://github.com/LuoxueQWQ/android_device_xiaomi_Mi8937.git
+          cd android_device_xiaomi_Mi8937
+          # 如果需要切换到特定的分支或标签，可以执行以下命令  
+          # git checkout a13-master
+   
+      - name: Compile device tree  
+        run: |  
+          # 切换到设备树仓库目录  
+          cd android_device_xiaomi_Mi8937
+          # 假设 Makefile 在 device-tree-repo 的根目录下  
+          make  
+   
+      - name: Upload compiled DTB as artifact  
+        uses: actions/upload-artifact@v3  
+        with:  
+          name: compiled-dtb  
+          path: device-tree-repo/path/to/output/*.dtb
