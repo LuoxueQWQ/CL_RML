@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies  
         run: |  
           apt-get update  
-          apt-get install device-tree-compiler
+          apt-get install -y --no-install-recommends device-tree-compiler
           apt-get install -y --no-install-recommends build-essential dtc
    
       - name: Clone device tree repository  
